@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GameComponent implements OnInit {
 
+  status: string = "";
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  initNewGame(): void {
+    this.status = "bueno";
   }
 
 }

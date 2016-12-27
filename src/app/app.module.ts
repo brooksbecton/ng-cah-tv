@@ -9,14 +9,14 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { GameModule } from './game/game.module';
-
-
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomeComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
