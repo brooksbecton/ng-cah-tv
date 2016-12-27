@@ -6,30 +6,24 @@ import { HttpModule } from '@angular/http'
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { TableModule } from './table/table.module';
-import { TableComponent } from './table/table.component';
+import { AppRoutingModule } from './app-routing.module';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { GameComponent } from './game/game.component';
 
 
-// Define the ROUTES
-const ROUTES = [
-  {
-    path: '',
-    redirectTo: 'posts',
-    pathMatch: 'full'
-  }
-];
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    TableComponent,
+    WelcomeComponent,
+    GameComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES),
-    TableModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
