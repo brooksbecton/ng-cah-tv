@@ -8,7 +8,7 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { WelcomeComponent } from './welcome/welcome.component';
-import { GameComponent } from './game/game.component';
+import { GameModule } from './game/game.module';
 
 
 
@@ -17,11 +17,11 @@ import { GameComponent } from './game/game.component';
   declarations: [
     AppComponent,
     WelcomeComponent,
-    GameComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    GameModule,
     HttpModule,
     AppRoutingModule,
   ],
