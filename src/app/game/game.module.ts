@@ -15,7 +15,6 @@ import { firebaseConfig } from './../../assets/firebaseConfig';
     CommonModule,
     RouterModule,
     AngularFireModule.initializeApp(firebaseConfig)
-
   ],
   declarations: [
     CardComponent,

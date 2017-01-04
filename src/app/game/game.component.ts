@@ -23,7 +23,6 @@ export class GameComponent implements OnInit {
   putNewGameOnDb() {
     const games = this.af.database.object('/games');
     games.set({ 'id': '1', 'name': 'YaBoiBrooks' });
-
   };
 
 }
