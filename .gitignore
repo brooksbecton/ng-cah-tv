@@ -40,4 +40,4 @@ testem.log
 Thumbs.db
 
 #private files
-firebase.js
+firebaseConfig.ts
