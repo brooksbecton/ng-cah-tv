@@ -12,6 +12,7 @@ const routes: Routes = [
   { path: 'welcome', component: WelcomeComponent },
   { path: 'game', component: GameComponent },
   { path: 'game/table', component: TableComponent },
+  { path: 'game/table/:id', component: TableComponent },
   { path: '**', redirectTo: '/404' }
 ];
 
