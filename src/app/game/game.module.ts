@@ -7,6 +7,7 @@ import { GameComponent } from './game.component'
 import { CardComponent } from './card/card.component';
 import { TableComponent } from './table/table.component';
 import { TableService } from './table/table.service';
+import { PlayerComponent } from './player/player.component';
 
 import { firebaseConfig } from './../../assets/firebaseConfig';
 
@@ -19,7 +20,8 @@ import { firebaseConfig } from './../../assets/firebaseConfig';
   declarations: [
     CardComponent,
     GameComponent,
-    TableComponent
+    TableComponent,
+    PlayerComponent
   ],
   providers: [
     TableService

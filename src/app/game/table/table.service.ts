@@ -3,12 +3,12 @@ import { AngularFire } from 'angularfire2';
 
 import { Table } from './models/Table'
 
-
 @Injectable()
 export class TableService {
 
   constructor(private af: AngularFire) { }
 
+  //Table CRUD
   deleteTable(id: string, table: Table): void {
     const tableRef = this.af.database.object('/games/' + id);
     tableRef.remove();
