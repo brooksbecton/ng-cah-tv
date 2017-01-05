@@ -1,6 +1,14 @@
 <h3>Table</h3>
-<b>id:</b>{{id}}
+<b>id: </b>{{id}}
 
 <h3>Table Info</h3>
-{{table | json}}
+{{table | async | json}}
 <button class="btn" (click)="initTable()">New Table</button>
+
+
+
+<h3>Players</h3>
+<p>{{(table | async | json)?.players}}</p>
+<ul>
+    <li *ngFor="let player of (table | async)?.players">{{player.name}}</li>
+</ul>

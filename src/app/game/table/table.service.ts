@@ -14,16 +14,8 @@ export class TableService {
     tableRef.remove();
   }
 
-  getTable(id: string): Table {
-    var table: Table;
-    const tableRef = this.af.database.list('/games/' + id);
-    tableRef
-      .subscribe(snapshots => {
-        snapshots.forEach(snapshot => {
-          table = snapshot.$value;
-        });
-      })
-    return table;
+  getTable(id: string): any {
+    return this.af.database.object('/games/' + id);
   }
 
   putTable(id: string, table: Table): void {

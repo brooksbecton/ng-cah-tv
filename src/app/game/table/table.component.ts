@@ -1,10 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AngularFire, FirebaseListObservable } from 'angularfire2';
+var shortid = require('shortid');
 
 import { Table } from './Table'
 import { TableService } from './table.service'
-
-var shortid = require('shortid');
+import { Player } from './../player/Player'
 
 
 @Component({
@@ -14,7 +15,7 @@ var shortid = require('shortid');
 })
 export class TableComponent implements OnInit {
 
-  table: Table;
+  table: FirebaseListObservable<any[]>;
   id: string;
   private routeSub: any;
 
@@ -43,7 +44,11 @@ export class TableComponent implements OnInit {
     this.id = shortid.generate();
     let defaultTable = new Table;
 
+    let defaultPlayer = new Player("Chris");
+
+
     defaultTable.id = this.id;
+    defaultTable.players.push(defaultPlayer);
 
     this.tableDb.putTable(this.id, defaultTable);
   }
