@@ -7,10 +7,11 @@ import { GameComponent } from './game.component'
 import { TableComponent } from './table/table.component';
 import { TableService } from './table/table.service';
 import { PlayerComponent } from './player/player.component';
-
-import { firebaseConfig } from './../../assets/firebaseConfig';
 import { BlackCardComponent } from './black-card/black-card.component';
 import { WhiteCardComponent } from './white-card/white-card.component';
+import { JoinComponent } from './join/join.component';
+
+import { firebaseConfig } from './../../assets/firebaseConfig';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { WhiteCardComponent } from './white-card/white-card.component';
     GameComponent,
     PlayerComponent,
     TableComponent,
-    WhiteCardComponent
+    WhiteCardComponent,
+    JoinComponent
   ],
   providers: [
     TableService
