@@ -1,5 +1,5 @@
-import { WhiteCard }  from './white-card'
-import { Player }  from './player'
+import { WhiteCard }  from './../white-card/white-card'
+import { Player }  from './../player/player'
 
 export class Table{
     id: string = null;

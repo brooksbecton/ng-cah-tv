@@ -4,12 +4,13 @@ import { RouterModule } from '@angular/router';
 import { AngularFireModule } from 'angularfire2';
 
 import { GameComponent } from './game.component'
-import { CardComponent } from './card/card.component';
 import { TableComponent } from './table/table.component';
 import { TableService } from './table/table.service';
 import { PlayerComponent } from './player/player.component';
 
 import { firebaseConfig } from './../../assets/firebaseConfig';
+import { BlackCardComponent } from './black-card/black-card.component';
+import { WhiteCardComponent } from './white-card/white-card.component';
 
 @NgModule({
   imports: [
@@ -18,10 +19,11 @@ import { firebaseConfig } from './../../assets/firebaseConfig';
     AngularFireModule.initializeApp(firebaseConfig)
   ],
   declarations: [
-    CardComponent,
+    BlackCardComponent,
     GameComponent,
+    PlayerComponent,
     TableComponent,
-    PlayerComponent
+    WhiteCardComponent
   ],
   providers: [
     TableService

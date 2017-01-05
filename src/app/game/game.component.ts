@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import {Table} from './table/models/Table'
-
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',

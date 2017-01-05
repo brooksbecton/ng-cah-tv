@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFire } from 'angularfire2';
 
-import { Table } from './models/Table'
+import { Table } from './Table'
 
 @Injectable()
 export class TableService {
@@ -20,7 +20,7 @@ export class TableService {
     tableRef
       .subscribe(snapshots => {
         snapshots.forEach(snapshot => {
-          table = snapshot.val();
+          table = snapshot.$value;
         });
       })
     return table;
