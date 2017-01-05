@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { AngularFireModule } from 'angularfire2';
 
-import { FirebaseService } from './firebase.service'
 import { GameComponent } from './game.component'
 import { CardComponent } from './card/card.component';
 import { TableComponent } from './table/table.component';
+import { TableService } from './table/table.service';
 
 import { firebaseConfig } from './../../assets/firebaseConfig';
 
@@ -22,7 +22,7 @@ import { firebaseConfig } from './../../assets/firebaseConfig';
     TableComponent
   ],
   providers: [
-    FirebaseService
+    TableService
   ]
 })
 export class GameModule { }

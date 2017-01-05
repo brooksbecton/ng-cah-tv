@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFire } from 'angularfire2';
+
+import {Table} from './table/models/Table'
 
 @Component({
   selector: 'app-game',
@@ -8,21 +9,10 @@ import { AngularFire } from 'angularfire2';
 })
 export class GameComponent implements OnInit {
 
-  status: string = "";
-
-  constructor(private af: AngularFire) {
+  constructor() {
   }
 
   ngOnInit() {
   }
-
-  initNewGame(): void {
-    this.putNewGameOnDb();
-  }
-
-  putNewGameOnDb() {
-    const games = this.af.database.object('/games');
-    games.set({ 'id': '1', 'name': 'YaBoiBrooks' });
-  };
 
 }
