@@ -10,6 +10,7 @@ import { TableComponent } from './table/table.component';
 import { TableService } from './table/table.service';
 import { PlayerComponent } from './player/player.component';
 import { BlackCardComponent } from './black-card/black-card.component';
+import { BlackCardService } from './black-card/black-card.service';
 import { WhiteCardComponent } from './white-card/white-card.component';
 import { JoinComponent } from './join/join.component';
 
@@ -33,6 +34,7 @@ import { KeysPipe } from './keys.pipe';
     KeysPipe
   ],
   providers: [
+    BlackCardService,
     TableService
   ]
 })
