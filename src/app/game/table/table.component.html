@@ -2,8 +2,6 @@
 <b>id: </b>{{id}}
 
 <h3>Table Info</h3>
-{{table | async | json}}
-{{whiteCards | json}}
 <button class="btn" (click)="initTable()">New Table</button>
 
 
@@ -12,3 +10,15 @@
 <ul>
     <li *ngFor="let player of (table | async)?.players | keys">{{player.value.name}}</li>
 </ul>
+<div class="col-md-6">
+    <h3>White Cards</h3>
+    <ul>
+        <li *ngFor="let whiteCard of whiteCards">{{whiteCard | whiteCard}}</li>
+    </ul>
+</div>
+<div class="col-md-6">
+    <h3>Black Cards</h3>
+    <ul>
+        <li *ngFor="let blackCard of blackCards">{{(blackCard | blackCard).text}}</li>
+    </ul>
+</div>

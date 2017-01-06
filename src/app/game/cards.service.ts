@@ -30,6 +30,10 @@ export class CardsService {
     return array;
   }
 
+  getBlackCards(): BlackCard[]{
+    return this.blackCards;
+  }
+
   getWhiteCards(): WhiteCard[]{
     return this.whiteCards;
   }

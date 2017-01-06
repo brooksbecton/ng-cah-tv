@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 var shortid = require('shortid');
 
+import { BlackCard } from './../black-card/black-card'
 import { CardsService } from './../cards.service'
 import { Player } from './../player/Player'
 import { WhiteCard } from './../white-card/white-card'
@@ -18,6 +19,7 @@ import { TableService } from './table.service'
 export class TableComponent implements OnInit {
 
   whiteCards: WhiteCard[];
+  blackCards: BlackCard[];
   table: FirebaseListObservable<any[]>;
   id: string;
   private routeSub: any;
@@ -27,6 +29,7 @@ export class TableComponent implements OnInit {
     private tableDb: TableService,
     private cards: CardsService) {
       this.whiteCards = cards.getWhiteCards();
+      this.blackCards = cards.getBlackCards();
     }
 
   ngOnInit() {
