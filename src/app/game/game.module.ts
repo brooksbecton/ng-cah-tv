@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule }   from '@angular/forms';
 import { RouterModule } from '@angular/router';
+
 import { AngularFireModule } from 'angularfire2';
 
 import { GameComponent } from './game.component'
@@ -12,10 +14,12 @@ import { WhiteCardComponent } from './white-card/white-card.component';
 import { JoinComponent } from './join/join.component';
 
 import { firebaseConfig } from './../../assets/firebaseConfig';
+import { KeysPipe } from './keys.pipe';
 
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     RouterModule,
     AngularFireModule.initializeApp(firebaseConfig)
   ],
@@ -25,7 +29,8 @@ import { firebaseConfig } from './../../assets/firebaseConfig';
     PlayerComponent,
     TableComponent,
     WhiteCardComponent,
-    JoinComponent
+    JoinComponent,
+    KeysPipe
   ],
   providers: [
     TableService
