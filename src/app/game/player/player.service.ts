@@ -27,8 +27,8 @@ export class PlayerService {
   }
 
   putPlayer(id: string, player: Player): void {
-    const tableRef = this.af.database.object('/games/' + id + '/players');
-    tableRef.set(player);
+    const tableRef = this.af.database.list('/games/' + id + '/players');
+    tableRef.push(player);
   }
 
   updatePlayer(id: string, player: Player): void {

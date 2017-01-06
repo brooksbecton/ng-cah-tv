@@ -8,7 +8,6 @@
 
 
 <h3>Players</h3>
-<p>{{(table | async | json)?.players}}</p>
 <ul>
-    <li *ngFor="let player of (table | async)?.players">{{player.name}}</li>
+    <li *ngFor="let player of (table | async)?.players | keys">{{player.value.name}}</li>
 </ul>

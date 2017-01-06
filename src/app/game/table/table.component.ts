@@ -19,6 +19,8 @@ export class TableComponent implements OnInit {
   id: string;
   private routeSub: any;
 
+  testPlayers = [{"asdfasdfasdf": "dan"},{"jgjggh": "dbob"}];
+
   constructor(
     private route: ActivatedRoute,
     private tableDb: TableService) { }
@@ -44,11 +46,7 @@ export class TableComponent implements OnInit {
     this.id = shortid.generate();
     let defaultTable = new Table;
 
-    let defaultPlayer = new Player("Chris");
-
-
     defaultTable.id = this.id;
-    defaultTable.players.push(defaultPlayer);
 
     this.tableDb.putTable(this.id, defaultTable);
   }
