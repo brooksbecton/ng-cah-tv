@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
 import { AngularFire } from 'angularfire2';
 
+import { BlackCard } from './../black-card/black-card'
 import { Table } from './Table'
+
+let cahCards = require('./../../../assets/masterCah.json');
 
 @Injectable()
 export class TableService {
 
-  constructor(private af: AngularFire) { }
+  constructor(private af: AngularFire)
+  { }
 
   //Table CRUD
   deleteTable(id: string, table: Table): void {

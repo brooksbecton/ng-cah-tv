@@ -3,9 +3,11 @@ import { ActivatedRoute } from '@angular/router';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 var shortid = require('shortid');
 
+import { CardsService } from './../cards.service'
+import { Player } from './../player/Player'
+import { WhiteCard } from './../white-card/white-card'
 import { Table } from './Table'
 import { TableService } from './table.service'
-import { Player } from './../player/Player'
 
 
 @Component({
@@ -15,18 +17,21 @@ import { Player } from './../player/Player'
 })
 export class TableComponent implements OnInit {
 
+  whiteCards: WhiteCard[];
   table: FirebaseListObservable<any[]>;
   id: string;
   private routeSub: any;
 
-  testPlayers = [{"asdfasdfasdf": "dan"},{"jgjggh": "dbob"}];
-
   constructor(
     private route: ActivatedRoute,
-    private tableDb: TableService) { }
+    private tableDb: TableService,
+    private cards: CardsService) {
+      this.whiteCards = cards.getWhiteCards();
+    }
 
   ngOnInit() {
     this.getRouteParams();
+
   }
 
   getRouteParams(): void {
@@ -49,6 +54,10 @@ export class TableComponent implements OnInit {
     defaultTable.id = this.id;
 
     this.tableDb.putTable(this.id, defaultTable);
+  }
+
+  getDefaultCards(){
+
   }
 
   OnDestroy(){
