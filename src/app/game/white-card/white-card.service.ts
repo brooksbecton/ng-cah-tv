@@ -9,24 +9,20 @@ export class WhiteCardService {
   constructor(private af: AngularFire) { }
 
   //White Card CRUD
-  deleteCard(id: string, whiteCard: WhiteCard): void {
-    const whiteCardsRef = this.af.database.object('/games/' + id + 'whiteCard');
+  deleteCard(tableId: string, playerId: string, whiteCard: WhiteCard): void {
+    const whiteCardsRef = this.af.database.list('/games/' + tableId + '/' + playerId + '/cards');
     whiteCardsRef.remove();
   }
 
-  getCard(id: string): any {
-    return this.af.database.object('/games/' + id + 'whiteCard');
+  putCard(tableId: string, playerId: string, whiteCard: WhiteCard): void {
+    const whiteCardsRef = this.af.database.list('/games/' + tableId + '/players/' + playerId + '/cards');
+    whiteCardsRef.push(whiteCard);
   }
 
-  putCard(id: string, whiteCard: WhiteCard): void {
-    const whiteCardsRef = this.af.database.object('/games/' + id + 'whiteCard');
-    whiteCardsRef.set(whiteCard);
+  dealPlayerCards(tableId: string, playerId: string, cards: WhiteCard[]): void {
+    while (cards.length > 0) {
+      this.putCard(tableId, playerId, cards.pop())
+    }
   }
-
-  updateCard(id: string, whiteCard: WhiteCard): void {
-    const whiteCardsRef = this.af.database.object('/games/' + id + 'whiteCard');
-    whiteCardsRef.update(whiteCard);
-  }
-
 
 }

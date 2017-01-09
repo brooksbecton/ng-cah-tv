@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { PlayerService } from './../player/player.service'
 import { Player } from './../player/Player'
-
+import { PlayerService } from './../player/player.service'
+import { TableService } from './../table/table.service'
+import { WhiteCardService } from './../white-card/white-card.service'
 
 @Component({
   selector: 'join-game',
@@ -17,16 +18,28 @@ export class JoinComponent implements OnInit {
   tableId: string = "";
 
   constructor(
-    private playerDb: PlayerService,
-    private router: Router
+    private playerService: PlayerService,
+    private router: Router,
+    private tableService: TableService,
+    private whiteCardService: WhiteCardService,
   ) { }
 
-  ngOnInit() {    
+  ngOnInit() {
   }
 
   joinTable() {
+
+    let defaultCardAmount = 10;
+
     let newPlayer = new Player(this.playerName);
-    this.playerDb.putPlayer(this.tableId, newPlayer);
+
+    this.playerService.putPlayer(this.tableId, newPlayer).then(snapshot =>{
+      newPlayer.id = snapshot.key;
+      this.tableService.dealPlayerCards(this.tableId, newPlayer.id, defaultCardAmount);
+    });
+
+    
+
     this.router.navigate(['/game/table/' + this.tableId]);
   }
 

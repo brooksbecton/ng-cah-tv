@@ -1,6 +1,7 @@
 import { BlackCard }  from './../black-card/black-card'
 
 export class Player{
+    id: string;
     name: string;
     points: number;
     czar: boolean;

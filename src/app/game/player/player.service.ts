@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
+
 import { Player } from './Player'
 
 
@@ -15,16 +16,15 @@ export class PlayerService {
   }
 
   getPlayer(tableId: string, playerId: string): FirebaseListObservable<any> {
-    return this.af.database.list('/games/' + tableId + '/players/' + playerId );
+    return this.af.database.list('/games/' + tableId + '/players/' + playerId);
   }
 
   getAllPlayers(id: string): FirebaseListObservable<any> {
     return this.af.database.list('/games/' + id + '/players');
   }
 
-  putPlayer(id: string, player: Player): void {
-    const tableRef = this.af.database.list('/games/' + id + '/players');
-    tableRef.push(player);
+  putPlayer(id: string, player: Player): any {
+      return this.af.database.list('/games/' + id + '/players').push(player);
   }
 
   updatePlayer(id: string, player: Player): void {

@@ -16,9 +16,10 @@ import { PlayerService } from './player/player.service';
 import { TableComponent } from './table/table.component';
 import { TableService } from './table/table.service';
 import { WhiteCardComponent } from './white-card/white-card.component';
+import { WhiteCardPipe } from './white-card/white-card.pipe';
+import { WhiteCardService } from './white-card/white-card.service';
 
 import { firebaseConfig } from './../../assets/firebaseConfig';
-import { WhiteCardPipe } from './white-card/white-card.pipe';
 
 @NgModule({
   imports: [
@@ -42,7 +43,8 @@ import { WhiteCardPipe } from './white-card/white-card.pipe';
   providers: [
     CardsService,
     PlayerService,
-    TableService
+    TableService,
+    WhiteCardService
   ]
 })
 export class GameModule { }

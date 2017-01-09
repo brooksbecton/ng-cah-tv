@@ -8,6 +8,7 @@ import { CardsService } from './../cards.service'
 import { Player } from './../player/Player'
 import { PlayerService } from './../player/player.service'
 import { WhiteCard } from './../white-card/white-card'
+import { WhiteCardService } from './../white-card/white-card.service'
 import { Table } from './Table'
 import { TableService } from './table.service'
 
@@ -19,57 +20,50 @@ import { TableService } from './table.service'
 })
 export class TableComponent implements OnInit {
 
-  whiteCards: WhiteCard[];
-  blackCards: BlackCard[];
   table: FirebaseListObservable<any[]>;
   players: FirebaseListObservable<any[]>;
-  id: string;
+  tableId: string;
   private routeSub: any;
 
   constructor(
     private cards: CardsService,
     private playersService: PlayerService,
     private route: ActivatedRoute,
-    private tableDb: TableService,
-    ) {
+    private tableService: TableService,
+    private whiteCardService: WhiteCardService
+  ) {
 
-    this.getDefaultCards();
+    this.tableService.getDefaultCards();
   }
 
   ngOnInit() {
     this.getRouteParams();
-
   }
 
-  getDefaultCards() {
-    this.whiteCards = this.cards.getWhiteCards();
-    this.blackCards = this.cards.getBlackCards();
-  }
-
-  getPlayers(){
-    this.players = this.playersService.getAllPlayers(this.id);
+  getPlayers() {
+    this.players = this.playersService.getAllPlayers(this.tableId);
   }
 
   getRouteParams(): void {
     let id = ""
 
     this.routeSub = this.route.params.subscribe(params => {
-      this.id = params['id'];
-      this.getTableInfo(this.id);
+      this.tableId = params['id'];
+      this.getTableInfo(this.tableId);
     });
   }
 
   getTableInfo(id) {
-    this.table = this.tableDb.getTable(id)
+    this.table = this.tableService.getTable(id)
   }
 
   initNewTable(): void {
-    this.id = uid.random();
+    this.tableId = uid.random();
     let defaultTable = new Table;
 
-    defaultTable.id = this.id;
+    defaultTable.id = this.tableId;
 
-    this.tableDb.putTable(this.id, defaultTable);
+    this.tableService.putTable(this.tableId, defaultTable);
   }
 
 
