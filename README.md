@@ -1,7 +1,10 @@
 # Cah-Tv
 
 ## About
+
 Cah-TV will alows users to start a game of Cards Against Humanity through a website and invite their friends to join and play.
+
+Have Fun!
 
 ## Set Up
 
