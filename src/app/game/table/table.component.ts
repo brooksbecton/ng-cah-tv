@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
-let uid = require('human-readable-ids').hri, i;
 
 import { BlackCard } from './../black-card/black-card'
 import { CardsService } from './../cards.service'
@@ -55,15 +54,6 @@ export class TableComponent implements OnInit {
 
   getTableInfo(id) {
     this.table = this.tableService.getTable(id)
-  }
-
-  initNewTable(): void {
-    this.tableId = uid.random();
-    let defaultTable = new Table;
-
-    defaultTable.id = this.tableId;
-
-    this.tableService.putTable(this.tableId, defaultTable);
   }
 
 

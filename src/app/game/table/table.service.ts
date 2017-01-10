@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFire } from 'angularfire2';
+let uid = require('human-readable-ids').hri, i;
 
 import { CardsService } from './../cards.service'
 import { BlackCard } from './../black-card/black-card'
@@ -37,6 +38,16 @@ export class TableService {
     return this.af.database.object('/games/' + id);
   }
 
+  initNewTable(): string {
+    let defaultTable = new Table;
+
+    defaultTable.id = uid.random();
+
+    this.putTable(defaultTable.id, defaultTable);
+
+    return defaultTable.id;
+  }
+
   putTable(id: string, table: Table): void {
     const tableRef = this.af.database.object('/games/' + id);
     tableRef.set(table);
@@ -47,7 +58,7 @@ export class TableService {
     tableRef.update(table);
   }
 
-  dealPlayerCards(tableId: string, playerId: string, cardAmount: number) {
+  dealPlayerCards(tableId: string, playerId: string, cardAmount: number): void {
     let cards = this.whiteCards.slice(0, cardAmount);
     this.whiteCardService.dealPlayerCards(tableId, playerId, cards);
   }
