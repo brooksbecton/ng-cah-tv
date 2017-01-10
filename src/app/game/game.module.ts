@@ -20,6 +20,7 @@ import { WhiteCardPipe } from './white-card/white-card.pipe';
 import { WhiteCardService } from './white-card/white-card.service';
 
 import { firebaseConfig } from './../../assets/firebaseConfig';
+import { LobbyComponent } from './lobby/lobby.component';
 
 @NgModule({
   imports: [
@@ -38,7 +39,8 @@ import { firebaseConfig } from './../../assets/firebaseConfig';
 
     BlackCardPipe,
     KeysPipe,
-    WhiteCardPipe
+    WhiteCardPipe,
+    LobbyComponent
   ],
   providers: [
     CardsService,

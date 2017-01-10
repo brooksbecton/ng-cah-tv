@@ -19,8 +19,8 @@ export class PlayerService {
     return this.af.database.list('/games/' + tableId + '/players/' + playerId);
   }
 
-  getAllPlayers(id: string): FirebaseListObservable<any> {
-    return this.af.database.list('/games/' + id + '/players');
+  getAllPlayers(tableId: string): FirebaseListObservable<any> {
+    return this.af.database.list('/games/' + tableId + '/players');
   }
 
   putPlayer(id: string, player: Player): any {

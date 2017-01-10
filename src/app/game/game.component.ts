@@ -18,11 +18,12 @@ export class GameComponent implements OnInit {
   }
 
   ngOnInit() {
+    
   }
 
   initNewTable(): void {
     let id = this.tableService.initNewTable();
-    this.router.navigateByUrl('game/table/' + id);
+    this.router.navigateByUrl('game/join/' + id);
   }
 
 }

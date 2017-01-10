@@ -1,0 +1,11 @@
+<h1>Lobby</h1>
+
+<h3>Id</h3>
+<p>{{tableId}}</p>
+
+<h3>Players</h3>
+<ul>
+    <li  *ngFor="let player of players | keys">{{player.value.name}}</li>
+</ul>
+
+<button class="btn btn-primary">Start Game</button>
