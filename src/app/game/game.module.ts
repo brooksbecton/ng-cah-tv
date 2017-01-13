@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule }   from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { AngularFireModule } from 'angularfire2';
-
 import { BlackCardComponent } from './black-card/black-card.component';
 import { BlackCardPipe } from './black-card/black-card.pipe';
 import { CardsService } from './cards.service'
@@ -19,7 +17,6 @@ import { WhiteCardComponent } from './white-card/white-card.component';
 import { WhiteCardPipe } from './white-card/white-card.pipe';
 import { WhiteCardService } from './white-card/white-card.service';
 
-import { firebaseConfig } from './../../assets/firebaseConfig';
 import { LobbyComponent } from './lobby/lobby.component';
 
 @NgModule({
@@ -27,7 +24,6 @@ import { LobbyComponent } from './lobby/lobby.component';
     CommonModule,
     FormsModule,
     RouterModule,
-    AngularFireModule.initializeApp(firebaseConfig)
   ],
   declarations: [
     BlackCardComponent,

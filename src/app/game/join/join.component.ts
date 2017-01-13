@@ -6,6 +6,7 @@ import { Player } from './../player/Player'
 import { PlayerService } from './../player/player.service'
 import { TableService } from './../table/table.service'
 import { WhiteCardService } from './../white-card/white-card.service'
+import { AuthService } from './../../auth/auth.service'
 
 @Component({
   selector: 'join-game',
@@ -20,6 +21,7 @@ export class JoinComponent implements OnInit {
   tableId: string = "";
 
   constructor(
+    private authService: AuthService,
     private route: ActivatedRoute,
     private playerService: PlayerService,
     private router: Router,
@@ -43,14 +45,27 @@ export class JoinComponent implements OnInit {
 
   joinTable() {
     let defaultCardAmount = 10;
+    let newPlayer: Player;
 
-    let newPlayer = new Player(this.playerName);
+    this.authService.isSignedIn().subscribe((user) => {
 
-    this.playerService.putPlayer(this.tableId, newPlayer).then(snapshot => {
-      newPlayer.id = snapshot.key;
-      this.tableService.dealPlayerCards(this.tableId, newPlayer.id, defaultCardAmount);
+       
+      //If the user is not signed in we will sign them in Anon 
+      if(!user){
+        this.authService.login(this.playerName);
+      }
+
+      newPlayer = new Player(user.uid, this.playerName);
+
+      this.playerService.putPlayer(this.tableId, newPlayer).then((snapshot) => {
+        this.tableService.dealPlayerCards(this.tableId, newPlayer.id, defaultCardAmount);
+      });
+
+      this.router.navigate(['/game/lobby/' + this.tableId]);
     });
-    this.router.navigate(['/game/lobby/' + this.tableId]);
-  }
+
+  };
+
+
 
 }

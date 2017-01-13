@@ -20,6 +20,7 @@ export class WhiteCardService {
   }
 
   dealPlayerCards(tableId: string, playerId: string, cards: WhiteCard[]): void {
+    console.log(playerId);
     while (cards.length > 0) {
       this.putCard(tableId, playerId, cards.pop())
     }

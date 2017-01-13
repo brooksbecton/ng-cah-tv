@@ -9,7 +9,7 @@ import { Player } from './Player'
 export class PlayerService {
 
   constructor(private af: AngularFire) { }
-  //Player CRUD
+  
   deletePlayer(id: string, player: Player): void {
     const tableRef = this.af.database.object('/games/' + id + '/players');
     tableRef.remove();
@@ -23,8 +23,9 @@ export class PlayerService {
     return this.af.database.list('/games/' + tableId + '/players');
   }
 
-  putPlayer(id: string, player: Player): any {
-      return this.af.database.list('/games/' + id + '/players').push(player);
+  putPlayer(tableId: string, player: Player): any {
+    console.log("putplayer: " + tableId + " " + player.id);
+      return this.af.database.object('/games/' + tableId + '/players/' + player.id).set(player);
   }
 
   updatePlayer(id: string, player: Player): void {
